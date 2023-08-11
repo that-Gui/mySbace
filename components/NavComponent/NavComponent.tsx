@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './NavComponent.module.css';
+import { SignInButton, SignOutButton } from '../buttons/Buttons';
+import AuthCheck from '../AuthCheck/AuthCheck';
 
 export default function NavComponent() {
 	return (
@@ -18,12 +20,22 @@ export default function NavComponent() {
 				<li>
 					<Link href='/about'>About</Link>
 				</li>
+				<AuthCheck>
+					<li>
+						<Link href='/blogs'>Blogs</Link>
+					</li>
+					<li>
+						<Link href='/users'>Users</Link>
+					</li>
+				</AuthCheck>
 				<li>
-					<Link href='/blogs'>Blogs</Link>
+					<SignInButton />
 				</li>
-				<li>
-					<Link href='/users'>Users</Link>
-				</li>
+				<AuthCheck>
+					<li>
+						<SignOutButton />
+					</li>
+				</AuthCheck>
 			</ul>
 		</nav>
 	);
