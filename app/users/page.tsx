@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { getServerSession } from 'next-auth/next';
+import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
 	title: 'mySbace users page',
@@ -10,7 +11,7 @@ export default async function Users() {
 	const session = await getServerSession();
 
 	if (!session) {
-		return <p>You must be signed in...</p>;
+		redirect('/api/auth/signin');
 	}
 	return (
 		<div>
