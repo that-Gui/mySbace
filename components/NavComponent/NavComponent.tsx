@@ -20,14 +20,12 @@ export default function NavComponent() {
 				<li>
 					<Link href='/about'>About</Link>
 				</li>
-				<AuthCheck>
-					<li>
-						<Link href='/blogs'>Blogs</Link>
-					</li>
-					<li>
-						<Link href='/users'>Users</Link>
-					</li>
-				</AuthCheck>
+				<li>
+					<Link href='/posts'>Posts</Link>
+				</li>
+				<li>
+					<Link href='/users'>Users</Link>
+				</li>
 				<li>
 					<SignInButton />
 				</li>

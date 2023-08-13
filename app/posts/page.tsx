@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import { getServerSession } from 'next-auth/next';
 
 export const metadata: Metadata = {
-	title: 'mySbace users page',
-	description: 'mySbace users directory.',
+	title: 'mySbace blogs page',
+	description: 'mySbace community blog content.',
 };
 
-export default async function Users() {
+export default async function Posts() {
 	const session = await getServerSession();
 
 	if (!session) {
@@ -14,7 +14,7 @@ export default async function Users() {
 	}
 	return (
 		<div>
-			<h1>Users page</h1>
+			<h1>Posts page</h1>
 		</div>
 	);
 }
