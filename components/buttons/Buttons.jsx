@@ -19,7 +19,7 @@ export function SignInButton() {
 					src={session.user?.image ?? '/mememan.webp'}
 					width={32}
 					height={32}
-					alt='Your Name'
+					alt='user profile picture'
 				/>
 			</Link>
 		);
