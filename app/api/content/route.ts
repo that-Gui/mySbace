@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { getServerSession } from 'next-auth/next';
 
 // dummy data
 const posts = [
@@ -59,5 +60,10 @@ const posts = [
 ];
 
 export async function GET() {
+	const session = await getServerSession();
+
+	if (!session) {
+		return NextResponse.json('Unauthorized', { status: 401 });
+	}
 	return NextResponse.json(posts);
 }
