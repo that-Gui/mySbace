@@ -12,6 +12,7 @@ export default async function Users() {
 
 	if (!session) {
 		redirect('/api/auth/signin');
+		/* return <p>You must be signed in...</p>; */
 	}
 	return (
 		<div>
