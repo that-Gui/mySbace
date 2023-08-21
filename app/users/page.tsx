@@ -1,6 +1,9 @@
+import { prisma } from '@/lib/prisma';
 import type { Metadata } from 'next';
 import { getServerSession } from 'next-auth/next';
-import { redirect } from 'next/navigation';
+// import { redirect } from 'next/navigation';
+import UserCard from '@/components/UserCard/UserCard';
+import styles from './page.module.css';
 
 export const metadata: Metadata = {
 	title: 'mySbace users page',
@@ -8,15 +11,21 @@ export const metadata: Metadata = {
 };
 
 export default async function Users() {
-	const session = await getServerSession();
+	// const session = await getServerSession();
+	const users = await prisma.user.findMany();
 
-	if (!session) {
-		redirect('/api/auth/signin');
-		/* return <p>You must be signed in...</p>; */
-	}
+	/* if (!session) {
+		// redirect('/api/auth/signin');
+		return <p>You must be signed in...</p>;
+	} */
 	return (
 		<div>
 			<h1>Users page</h1>
+			<div className={styles.grid}>
+				{users.map((user) => {
+					return <UserCard key={user.id} {...user} />;
+				})}
+			</div>
 		</div>
 	);
 }
