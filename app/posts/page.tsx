@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
-import { getServerSession } from 'next-auth/next';
+/* import { authOptions } from '../api/auth/[...nextauth]/route';
+import { getServerSession } from 'next-auth/next'; */
 import styles from './page.module.css';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
 	title: 'mySbace blogs page',
-	description: 'mySbace community blog content.',
+	description: 'mySbace community post content.',
 };
 
 interface Post {
@@ -15,8 +16,8 @@ interface Post {
 }
 
 export default async function Posts() {
-	// const session = await getServerSession();
-	const postlist: Post[] = await fetch('http://localhost:3000/api/content', {
+	/* const session = await getServerSession(authOptions); */
+	const postslist: Post[] = await fetch('http://localhost:3000/api/content', {
 		cache: 'default',
 	}).then((res) => res.json());
 
@@ -27,7 +28,7 @@ export default async function Posts() {
 		<div>
 			<h1>Posts page</h1>
 			<div className={styles.grid}>
-				{postlist.map((post) => {
+				{postslist.map((post) => {
 					return (
 						<Link href={`/posts/${post.slug}`} className={styles.cardTitle}>
 							<div className={styles.card}>
