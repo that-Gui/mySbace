@@ -26,7 +26,7 @@ export default async function Dashboard() {
 		<div className={styles.dashboardpagecontainer}>
 			<h1>Dashboard</h1>
 			<SignOutButton />
-			<UserProfileForm user={user} />
+			<UserProfileForm user={session.user} />
 		</div>
 	);
 }
