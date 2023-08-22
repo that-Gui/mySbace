@@ -26,6 +26,8 @@ export default async function Dashboard() {
 		<div className={styles.dashboardpagecontainer}>
 			<h1>Dashboard</h1>
 			<SignOutButton />
+			passing the user object from the session to the UserProfileForm component
+			instead of retrieving it from the database
 			<UserProfileForm user={session.user} />
 		</div>
 	);
