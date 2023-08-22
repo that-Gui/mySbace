@@ -1,4 +1,4 @@
-'use client';
+/* 'use client';
 
 import * as React from 'react';
 import { useSession } from 'next-auth/react';
@@ -69,3 +69,4 @@ export default function FollowBtn() {
 		return <button onClick={follow}>{!isMutating ? 'Follow' : '...'}</button>;
 	}
 }
+ */
