@@ -20,7 +20,7 @@ export default async function Users() {
 		// return <p>You must be signed in...</p>;
 	}
 	return (
-		<div>
+		<div className={styles.postspagecontainer}>
 			<h1>Users page</h1>
 			<div className={styles.grid}>
 				{users.map((user) => {

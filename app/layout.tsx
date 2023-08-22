@@ -20,13 +20,15 @@ export default function RootLayout({
 		<AuthProvider>
 			<html lang='en'>
 				<body className={myFont.className}>
-					<header>
-						<NavComponent />
-					</header>
-					<main>{children}</main>
-					<footer>
-						<p>© 2003 mySbace</p>
-					</footer>
+					<div className='container'>
+						<header>
+							<NavComponent />
+						</header>
+						<main>{children}</main>
+						<footer>
+							<p>© 2003 mySbace</p>
+						</footer>
+					</div>
 				</body>
 			</html>
 		</AuthProvider>

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-/* import { authOptions } from '../api/auth/[...nextauth]/route';
-import { getServerSession } from 'next-auth/next'; */
+import { authOptions } from '../api/auth/[...nextauth]/route';
+import { getServerSession } from 'next-auth/next';
 import styles from './page.module.css';
 import Link from 'next/link';
 
@@ -16,16 +16,16 @@ interface Post {
 }
 
 export default async function Posts() {
-	/* const session = await getServerSession(authOptions); */
+	const session = await getServerSession(authOptions);
 	const postslist: Post[] = await fetch('http://localhost:3000/api/content', {
 		cache: 'default',
 	}).then((res) => res.json());
 
-	/* if (!session) {
+	if (!session) {
 		return <p>You must be signed in...</p>;
-	} */
+	}
 	return (
-		<div>
+		<div className={styles.postspagecontainer}>
 			<h1>Posts page</h1>
 			<div className={styles.grid}>
 				{postslist.map((post) => {
