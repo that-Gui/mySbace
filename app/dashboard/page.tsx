@@ -8,7 +8,6 @@ import { UserProfileForm } from '@/components/UserProfileForm/UserProfileForm';
 
 export default async function Dashboard() {
 	const session = await getServerSession(authOptions);
-	console.log(session);
 
 	if (!session) {
 		redirect('/api/auth/signin');
