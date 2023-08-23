@@ -14,10 +14,8 @@ export default async function Dashboard() {
 		redirect('/api/auth/signin');
 	}
 
-	// if the user does not share his email with us, we cannot find him in the database and this breaks the app, like github login that does not share email account
 	const currentUserEmail = session?.user?.email!;
-	// removing the await allows the component to mount without waiting for the user to be fetched
-	const user = /* await */ prisma.user.findUnique({
+	const user = await prisma.user.findUnique({
 		where: {
 			email: currentUserEmail,
 		},
@@ -27,9 +25,7 @@ export default async function Dashboard() {
 		<div className={styles.dashboardpagecontainer}>
 			<h1>Dashboard</h1>
 			<SignOutButton />
-			passing the user object from the session to the UserProfileForm component
-			instead of retrieving it from the database
-			<UserProfileForm user={session.user} />
+			<UserProfileForm user={user} />
 		</div>
 	);
 }
