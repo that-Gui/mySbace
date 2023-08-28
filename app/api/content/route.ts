@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import { authOptions } from '../auth/[...nextauth]/route';
 import { getServerSession } from 'next-auth/next';
 import { prisma } from '@/lib/prisma';
-import { title } from 'process';
 
 // dummy data
 const posts = [
@@ -63,11 +62,6 @@ const posts = [
 ];
 
 export async function GET() {
-	/* const session = await getServerSession(authOptions);
-
-	if (!session) {
-		return NextResponse.json('Unauthorized', { status: 401 });
-	} */
 	return NextResponse.json(posts);
 }
 
