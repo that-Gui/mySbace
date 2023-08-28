@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { authOptions } from '../auth/[...nextauth]/route';
 import { getServerSession } from 'next-auth/next';
+import { prisma } from '@/lib/prisma';
+import { title } from 'process';
 
 // dummy data
 const posts = [
@@ -61,10 +63,43 @@ const posts = [
 ];
 
 export async function GET() {
+	/* const session = await getServerSession(authOptions);
+
+	if (!session) {
+		return NextResponse.json('Unauthorized', { status: 401 });
+	} */
+	return NextResponse.json(posts);
+}
+
+export async function POST(req: Request) {
 	const session = await getServerSession(authOptions);
 
 	if (!session) {
 		return NextResponse.json('Unauthorized', { status: 401 });
 	}
-	return NextResponse.json(posts);
+
+	const data = await req.json();
+
+	const newPost = await prisma.post.create({ data: data });
+
+	return NextResponse.json(newPost);
+}
+
+export async function PUT(req: Request) {
+	const session = await getServerSession(authOptions);
+
+	if (!session) {
+		return NextResponse.json('Unauthorized', { status: 401 });
+	}
+
+	const data = await req.json();
+
+	const updatedPost = await prisma.post.update({
+		where: {
+			id: data.id,
+		},
+		data: data,
+	});
+
+	return NextResponse.json(updatedPost);
 }

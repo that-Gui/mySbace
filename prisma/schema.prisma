@@ -54,6 +54,7 @@ model User {
   sessions      Session[]
   followedBy    Follows[] @relation("following")
   following     Follows[] @relation("follower")
+  posts         Post[] @relation("author")
 }
 
 model Follows {
@@ -63,6 +64,17 @@ model Follows {
   followingId String
 
   @@id([followerId, followingId])
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String
+  body      String? @db.Text
+  slug      String
+  author    User     @relation("author", fields: [authorId], references: [id])
+  authorId  String
 }
 
 model VerificationToken {
