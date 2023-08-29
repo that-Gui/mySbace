@@ -11,8 +11,6 @@ datasource db {
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
-// NextAuth Schema
-
 model Account {
   id                 String  @id @default(cuid())
   userId             String
@@ -40,8 +38,6 @@ model Session {
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
-
-//User Schema
 
 model User {
   id            String    @id @default(cuid())
