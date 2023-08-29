@@ -17,9 +17,12 @@ interface Post {
 
 export default async function Posts() {
 	const session = await getServerSession(authOptions);
-	const postslist: Post[] = await fetch('http://localhost:3000/api/content', {
-		cache: 'default',
-	}).then((res) => res.json());
+	const postslist: Post[] = await fetch(
+		'https://mysbace.vercel.app/api/content',
+		{
+			cache: 'default',
+		}
+	).then((res) => res.json());
 
 	if (!session) {
 		return <p>You must be signed in...</p>;
